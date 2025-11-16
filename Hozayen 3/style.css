@@ -1,0 +1,278 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background: #fff;
+  color: #111;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  border-radius: 0px 0px 30px 30px;
+
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 100;
+  
+}
+
+header .logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #000;
+}
+
+nav a {
+  margin-left: 30px;
+  text-decoration: none;
+  color: #111;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #a57c52;
+}
+
+.hero {
+  background: url('https://images.unsplash.com/photo-1600185364599-177b0c827a57?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  position: relative;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top:0; left:0; right:0; bottom:0;
+  background: rgba(0,0,0,0.4);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content h1 {
+  font-size: 50px;
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 50px;
+}
+
+.product-card {
+  border: 1px solid #eee;
+  overflow: hidden;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+}
+
+.product-card img {
+  width: 100%;
+  display: block;
+}
+
+.product-card .info {
+  padding: 15px;
+  text-align: center;
+}
+
+.product-card .info h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.product-card .info p {
+  color: #a57c52;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* ...باقي الـ CSS زي النسخة السابقة... */
+
+footer {
+  text-align: center;
+  padding: 55px;
+  background: #111;
+  color: #fff;
+  margin-top: 30px;
+    border-radius: 50px 50px 0px 0px;
+
+}
+
+footer .social {
+  margin-top: 20px;
+}
+
+footer .social a {
+  color: #a57c52;
+  margin: 0 10px;
+  font-size: 25px;
+  transition: 0.3s;
+    display: inline-block;
+    
+}
+
+footer .social a:hover {
+  color: #fff;
+}
+.product-card img {
+  width: 100%;        /* تاخد كامل عرض الكارد */
+  height: 300px;      /* ارتفاع موحد لكل الصور */
+  object-fit: cover;  /* الصورة تمتلئ الكارد بدون تشويه */
+  display: block;
+  border-radius: 10px; /* شكل أنيق للزوايا */
+}
+/* Lightbox Overlay */
+#lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #000;
+  transition: transform 0.3s;
+}
+
+#lightbox.show {
+  display: flex;
+  animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* عند Hover على الصور */
+.zoom-img {
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.zoom-img:hover {
+  transform: scale(1.05);
+}
+/* =============================
+     Responsive for < 1023px
+============================= */
+@media (max-width: 1023px) {
+
+  /* الهيدر */
+  header {
+    flex-direction: column;
+    text-align: center;
+    padding: 15px 0;
+  }
+
+  header .logo {
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+
+  nav {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 0 15px;
+  }
+
+  nav a {
+    flex: 1;
+    text-align: center;
+    font-size: 16px;
+    padding: 10px 0;
+    white-space: nowrap;
+  }
+
+  /* الهيرو */
+  .hero {
+    height: 250px;
+    padding: 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 32px;
+  }
+
+  .hero-content p {
+    font-size: 18px;
+  }
+
+  /* المنتجات */
+  .products {
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .product-card {
+    padding: 10px;
+  }
+
+  .product-card img {
+    height: auto;
+    width: 100%;
+  }
+
+  .product-card .info h3 {
+    font-size: 18px;
+  }
+
+  .product-card .info p {
+    font-size: 16px;
+  }
+
+  /* الفوتر */
+  footer {
+    text-align: center;
+    padding: 20px;
+  }
+
+  footer .social a {
+    font-size: 20px;
+    margin: 0 8px;
+  }
+}
