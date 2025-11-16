@@ -1,43 +1,25 @@
-console.log("Hozayen store loaded");
-
+// تأكد الصفحة اتحملت
 window.onload = () => {
   console.log("مرحبا بك في متجر Hozayen!");
 };
 
-// مثال: يمكن إضافة وظائف مثل عرض سريع للمنتجات لاحقاً
-// إنشاء Lightbox عند الضغط على أي صورة
-const lightbox = document.createElement('div');
-lightbox.id = 'lightbox';
-document.body.appendChild(lightbox);
-
-const images = document.querySelectorAll('.zoom-img');
-images.forEach(image => {
-  image.addEventListener('click', () => {
-    lightbox.innerHTML = `<img src="${image.src}" alt="${image.alt}">`;
-    lightbox.classList.add('show');
-  });
-});
-
-// إغلاق الـ Lightbox عند الضغط على الخلفية
-lightbox.addEventListener('click', (e) => {
-  if(e.target !== e.currentTarget) return;
-  lightbox.classList.remove('show');
-});
-// حدد كل الصور اللي عليها class zoom-img
-const images = document.querySelectorAll('.zoom-img');
+// اختار الـ lightbox الموجود في HTML
 const lightbox = document.getElementById('lightbox');
+
+// اختار كل الصور اللي عليها class zoom-img
+const images = document.querySelectorAll('.zoom-img');
 
 images.forEach(img => {
   img.addEventListener('click', () => {
-    // ضيف الصورة للـ lightbox
+    // اعرض الصورة في الـ lightbox
     lightbox.innerHTML = `<img src="${img.src}" alt="${img.alt}">`;
     lightbox.classList.add('show');
   });
 });
 
-// إغلاق الـ lightbox لما تضغط على أي مكان فيه
+// إغلاق الـ lightbox عند الضغط على الخلفية
 lightbox.addEventListener('click', (e) => {
-  if (e.target !== e.currentTarget) return; // تمنع الضغط على الصورة نفسها
+  if (e.target !== e.currentTarget) return; // لو ضغطت على الصورة نفسها، متقفلش
   lightbox.classList.remove('show');
   lightbox.innerHTML = '';
 });
