@@ -23,3 +23,21 @@ lightbox.addEventListener('click', (e) => {
   if(e.target !== e.currentTarget) return;
   lightbox.classList.remove('show');
 });
+// حدد كل الصور اللي عليها class zoom-img
+const images = document.querySelectorAll('.zoom-img');
+const lightbox = document.getElementById('lightbox');
+
+images.forEach(img => {
+  img.addEventListener('click', () => {
+    // ضيف الصورة للـ lightbox
+    lightbox.innerHTML = `<img src="${img.src}" alt="${img.alt}">`;
+    lightbox.classList.add('show');
+  });
+});
+
+// إغلاق الـ lightbox لما تضغط على أي مكان فيه
+lightbox.addEventListener('click', (e) => {
+  if (e.target !== e.currentTarget) return; // تمنع الضغط على الصورة نفسها
+  lightbox.classList.remove('show');
+  lightbox.innerHTML = '';
+});
